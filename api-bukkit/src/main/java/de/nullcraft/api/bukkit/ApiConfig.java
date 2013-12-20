@@ -4,10 +4,12 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import de.nullcraft.api.bukkit.config.ConfigCaster;
+import de.nullcraft.api.bukkit.config.SerializableDataSourceConfig;
 import de.nullcraft.api.bukkit.config.SerializableServerConfig;
 import de.nullcraft.api.collection.ImmutableUtils;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +22,21 @@ public class ApiConfig implements ConfigurationSerializable {
     private static final String CONFIG_SERVICEDB = "serviceDb";
 
     private final List<SerializableServerConfig> dbConfigs  = Lists.newArrayList();
-    private String serviceConnection;
+    private String serviceConnection = "local";
+
+    public ApiConfig() {
+        SerializableServerConfig dbConf = new SerializableServerConfig();
+        SerializableDataSourceConfig dsConf = new SerializableDataSourceConfig();
+
+        dsConf.setUrl("jdbc:mysql://localhost:3306/nullcraft_service");
+        dsConf.setDriver("com.mysql.jdbc.Driver");
+        dsConf.setUsername("root");
+        dsConf.setPassword("");
+        dbConf.setName("local");
+        dbConf.setDataSourceConfig(dsConf);
+
+        dbConfigs.add(dbConf);
+    }
 
     public void addDatabaseConfig(SerializableServerConfig config) {
         synchronized (dbConfigs) {

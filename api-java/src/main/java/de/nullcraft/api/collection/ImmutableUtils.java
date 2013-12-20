@@ -24,7 +24,9 @@ public final class ImmutableUtils {
         ImmutableList.Builder<T> builder = ImmutableList.builder();
 
         if (data != null && data.size() > 0)
-            builder.addAll(data);
+            for (T current : data)
+                if (current != null)
+                    builder.add(current);
 
         return builder.build();
     }
@@ -33,7 +35,9 @@ public final class ImmutableUtils {
         ImmutableMap.Builder<K, V> builder = ImmutableMap.builder();
 
         if (data != null && data.size() > 0)
-            builder.putAll(data);
+            for (Map.Entry<K, V> current : data.entrySet())
+                if (current.getKey() != null && current.getValue() != null)
+                    builder.put(current.getKey(), current.getValue());
 
         return builder.build();
     }

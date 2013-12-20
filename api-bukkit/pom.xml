@@ -58,6 +58,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>de.nullcraft.api:api-java</include>
+                                    <include>org.apache.commons:commons-lang3</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
