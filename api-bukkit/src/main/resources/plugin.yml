@@ -1,0 +1,6 @@
+name: 'Nullcraft API'
+version: '${project.version}'
+description: '${project.description}'
+authors: [ maxikg ]
+website: 'http://nullcraft.de/'
+main: de.nullcraft.api.bukkit.ApiPlugin
