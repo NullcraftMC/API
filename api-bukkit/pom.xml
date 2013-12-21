@@ -30,6 +30,11 @@
             <artifactId>api-java</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>de.nullcraft.api</groupId>
+            <artifactId>api-database</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,7 +62,7 @@
                         <configuration>
                             <artifactSet>
                                 <includes>
-                                    <include>de.nullcraft.api:api-java</include>
+                                    <include>de.nullcraft.api:*</include>
                                     <include>org.apache.commons:commons-lang3</include>
                                 </includes>
                             </artifactSet>

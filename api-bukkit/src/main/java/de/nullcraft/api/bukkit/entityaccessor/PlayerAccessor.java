@@ -4,7 +4,7 @@ import com.avaje.ebean.EbeanServer;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
-import de.nullcraft.api.bukkit.entities.PlayerEntity;
+import de.nullcraft.database.entites.PlayerEntity;
 import org.bukkit.OfflinePlayer;
 
 import java.util.concurrent.TimeUnit;

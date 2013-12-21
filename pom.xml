@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>api-java</module>
+        <module>api-database</module>
         <module>api-bukkit</module>
     </modules>
 

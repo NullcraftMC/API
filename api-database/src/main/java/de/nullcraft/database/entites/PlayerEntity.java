@@ -1,4 +1,4 @@
-package de.nullcraft.api.bukkit.entities;
+package de.nullcraft.database.entites;
 
 import javax.persistence.*;
 
