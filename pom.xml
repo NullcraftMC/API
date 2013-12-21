@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <modules>
         <module>api-java</module>
         <module>api-database</module>
@@ -18,6 +19,17 @@
     <groupId>de.nullcraft.api</groupId>
     <artifactId>api-parent</artifactId>
     <packaging>pom</packaging>
+
+    <distributionManagement>
+        <repository>
+            <id>nullcraft-repo</id>
+            <url>http://repo.nullcraft.de/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nullcraft-repo</id>
+            <url>http://repo.nullcraft.de/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
