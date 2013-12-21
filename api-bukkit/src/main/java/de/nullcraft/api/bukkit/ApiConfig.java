@@ -20,9 +20,11 @@ public class ApiConfig implements ConfigurationSerializable {
 
     private static final String CONFIG_DATABASECONS = "dbConnections";
     private static final String CONFIG_SERVICEDB = "serviceDb";
+    private static final String CONFIG_USEDB = "useDatabase";
 
     private final List<SerializableServerConfig> dbConfigs  = Lists.newArrayList();
     private String serviceConnection = "local";
+    private boolean useDatabase = false;
 
     public ApiConfig() {
         SerializableServerConfig dbConf = new SerializableServerConfig();
@@ -62,11 +64,20 @@ public class ApiConfig implements ConfigurationSerializable {
         return serviceConnection;
     }
 
+    public boolean isUseDatabase() {
+        return useDatabase;
+    }
+
+    public void setUseDatabase(boolean useDatabase) {
+        this.useDatabase = useDatabase;
+    }
+
     public synchronized Map<String, Object> serialize() {
         Map<String, Object> data = Maps.newHashMap();
 
         data.put(CONFIG_DATABASECONS, dbConfigs);
         data.put(CONFIG_SERVICEDB, serviceConnection);
+        data.put(CONFIG_USEDB, useDatabase);
 
         return data;
     }
@@ -77,6 +88,7 @@ public class ApiConfig implements ConfigurationSerializable {
 
         config.dbConfigs.addAll(caster.requireList(CONFIG_DATABASECONS, SerializableServerConfig.class));
         config.setServiceConnection(caster.require(CONFIG_SERVICEDB, String.class));
+        config.setUseDatabase(caster.require(CONFIG_USEDB, Boolean.class));
 
         return config;
     }

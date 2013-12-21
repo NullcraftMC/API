@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
  * @author maxikg <me@maxikg.de>
  */
 public class PlayerAccessor {
-
     private static volatile PlayerAccessor instance;
 
     private final EbeanServer server;

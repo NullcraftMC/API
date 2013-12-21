@@ -32,13 +32,15 @@ public class ApiPlugin extends NullcraftPlugin {
         }
 
         getTimer().start("dbsetup");
-        DatabaseRegistry registry = new DatabaseRegistry();
-        registry.addServers(EbeanUtils.construct(configuration.getDbConfigs(), getClassLoader()));
-        DatabaseRegistry.setInstance(registry);
-        getLogger().info("Databases initialized (took " + getTimer().stop("dbsetup") + " ms).");
+        if (configuration.isUseDatabase()) {
+            DatabaseRegistry registry = new DatabaseRegistry();
+            registry.addServers(EbeanUtils.construct(configuration.getDbConfigs(), getClassLoader()));
+            DatabaseRegistry.setInstance(registry);
 
-        PlayerAccessor playerAccessor = new PlayerAccessor(registry.getServer(configuration.getServiceConnection()));
-        PlayerAccessor.setInstance(playerAccessor);
+            PlayerAccessor playerAccessor = new PlayerAccessor(registry.getServer(configuration.getServiceConnection()));
+            PlayerAccessor.setInstance(playerAccessor);
+        }
+        getLogger().info("Databases initialized (took " + getTimer().stop("dbsetup") + " ms).");
     }
 
     public ApiConfig getConfiguration() {
