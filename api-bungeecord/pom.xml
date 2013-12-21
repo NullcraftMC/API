@@ -11,6 +11,13 @@
 
     <artifactId>api-bungeecord</artifactId>
 
+    <repositories>
+        <repository>
+            <id>sonatype-oss-repo</id>
+            <url>http://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
      <dependencies>
          <dependency>
              <groupId>net.md-5</groupId>
