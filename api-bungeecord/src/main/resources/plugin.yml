@@ -1,0 +1,4 @@
+name: 'NullcraftAPI'
+version: '${project.version}'
+author: 'maxikg'
+main: 'de.nullcraft.api.bungee.ApiPlugin'

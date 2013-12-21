@@ -8,6 +8,7 @@
         <module>api-java</module>
         <module>api-database</module>
         <module>api-bukkit</module>
+        <module>api-bungeecord</module>
     </modules>
 
     <parent>
