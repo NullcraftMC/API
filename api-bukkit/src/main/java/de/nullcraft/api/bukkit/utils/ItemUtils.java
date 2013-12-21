@@ -15,15 +15,15 @@ import java.util.List;
  */
 public final class ItemUtils {
 
-    public static void setItemStackLore(ItemStack itemStack, List<String> lore) {
-        setItemStackName(itemStack, null, lore);
+    public static ItemStack setItemStackLore(ItemStack itemStack, List<String> lore) {
+        return setItemStackName(itemStack, null, lore);
     }
 
-    public static void setItemStackName(ItemStack itemStack, String name) {
-        setItemStackName(itemStack, name, null);
+    public static ItemStack setItemStackName(ItemStack itemStack, String name) {
+        return setItemStackName(itemStack, name, null);
     }
 
-    public static void setItemStackName(ItemStack itemStack, String name, List<String> lore) {
+    public static ItemStack setItemStackName(ItemStack itemStack, String name, List<String> lore) {
         Preconditions.checkNotNull(itemStack);
 
         ItemMeta meta = itemStack.getItemMeta();
@@ -35,9 +35,11 @@ public final class ItemUtils {
             meta.setLore(lore);
 
         itemStack.setItemMeta(meta);
+
+        return itemStack;
     }
 
-    public static void dyeItemStack(ItemStack itemStack, Color color) {
+    public static ItemStack dyeItemStack(ItemStack itemStack, Color color) {
         Preconditions.checkNotNull(itemStack);
         Preconditions.checkNotNull(color);
 
@@ -47,9 +49,11 @@ public final class ItemUtils {
         LeatherArmorMeta meta = (LeatherArmorMeta) itemStack.getItemMeta();
         meta.setColor(color);
         itemStack.setItemMeta(meta);
+
+        return itemStack;
     }
 
-    public static void setSkullOwner(ItemStack itemStack, String owner) {
+    public static ItemStack setSkullOwner(ItemStack itemStack, String owner) {
         Preconditions.checkNotNull(itemStack);
         Preconditions.checkNotNull(owner);
 
@@ -59,6 +63,8 @@ public final class ItemUtils {
         SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
         meta.setOwner(owner);
         itemStack.setItemMeta(meta);
+
+        return itemStack;
     }
 
     public static ItemStack getSkull(String playerName) {
