@@ -6,14 +6,26 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+import java.util.Collection;
 import java.util.Set;
 
 /**
+ * A set of {@link org.bukkit.entity.Player}s on which you can apply some actions.
+ *
  * @author maxikg <me@maxikg.de>
  */
 public class PlayerSet {
 
     private final Set<Player> players = Sets.newHashSet();
+
+    public PlayerSet() {
+    }
+
+    public PlayerSet(Collection<? extends Player> players) {
+        synchronized (this.players) {
+            this.players.addAll(players);
+        }
+    }
 
     public void sendMessage(String message) {
         Preconditions.checkNotNull(message);
@@ -83,5 +95,17 @@ public class PlayerSet {
         }
 
         return false;
+    }
+
+    public boolean addPlayer(Player player) {
+        synchronized (players) {
+            return players.add(player);
+        }
+    }
+
+    public boolean removePlayer(Player player) {
+        synchronized (players) {
+            return players.remove(player);
+        }
     }
 }
