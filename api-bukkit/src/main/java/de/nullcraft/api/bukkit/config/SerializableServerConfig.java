@@ -18,6 +18,7 @@ public class SerializableServerConfig extends ServerConfig implements Configurat
 
     public SerializableServerConfig() {
         normalize();
+        setDataSourceConfig(new SerializableDataSourceConfig());
     }
 
     public void normalize() {
