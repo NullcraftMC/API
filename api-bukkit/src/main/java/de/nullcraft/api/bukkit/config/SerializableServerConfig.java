@@ -16,11 +16,18 @@ public class SerializableServerConfig extends ServerConfig implements Configurat
     private static final String CONFIG_DEBUGSQL = "debugSql";
     private static final String CONFIG_DATASOURCE = "datasource";
 
+    /**
+     * Konstructor.
+     */
     public SerializableServerConfig() {
         normalize();
         setDataSourceConfig(new SerializableDataSourceConfig());
     }
 
+    /**
+     * Normalisiert die Konfiguration. Dabei werden die Registrierung und die Registrierung als {@code default}-Server
+     * abgewiesen.
+     */
     public void normalize() {
         setRegister(false);
         setDefaultServer(false);

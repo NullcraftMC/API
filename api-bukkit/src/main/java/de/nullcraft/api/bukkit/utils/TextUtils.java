@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
  */
 public class TextUtils {
 
+    /**
+     * Der {@code char}, der einem Color-Code zur Ersetzung vorangestellt werden muss.
+     */
     public static final char WRITABLE_INDICATOR = '&';
 
     private static final ImmutableMap<String, String> REPLACEMENTS;
@@ -58,6 +61,12 @@ public class TextUtils {
         PARSE_PATTERN = Pattern.compile(patternBuilder.toString());
     }
 
+    /**
+     * Formatiert den angegebenen String.
+     *
+     * @param str Der zu formatiertende String
+     * @return Der formatierte String
+     */
     public static String format(String str) {
         StringBuffer sb = new StringBuffer();
         Matcher matcher = PARSE_PATTERN.matcher(str);
@@ -70,6 +79,14 @@ public class TextUtils {
         return sb.toString();
     }
 
+    /**
+     * Formatiert das angegebene {@code pattern} mit den angegebenen {@code objects}.
+     *
+     * @param pattern Das zu formatierende Pattern
+     * @param objects Die Objekte, die mit Platzhaltern ersetzt werden sollen
+     * @return Der formatierte String
+     * @see de.nullcraft.api.bukkit.utils.TextUtils#format(String)
+     */
     public static String format(String pattern, Object... objects) {
         String str = String.format(pattern, objects);
 
