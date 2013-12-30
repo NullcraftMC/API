@@ -2,6 +2,7 @@ package de.nullcraft.api.collection;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 
 import java.util.Collection;
 import java.util.Map;
@@ -24,6 +25,17 @@ public final class ImmutableUtils {
         ImmutableList.Builder<T> builder = ImmutableList.builder();
 
         if (data != null && data.size() > 0)
+            for (T current : data)
+                if (current != null)
+                    builder.add(current);
+
+        return builder.build();
+    }
+
+    public static <T> ImmutableSet<T> immutableSet(Collection<T> data) {
+        ImmutableSet.Builder<T> builder = ImmutableSet.builder();
+
+        if (data.size() > 0)
             for (T current : data)
                 if (current != null)
                     builder.add(current);
