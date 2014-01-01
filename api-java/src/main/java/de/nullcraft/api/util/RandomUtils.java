@@ -11,7 +11,7 @@ public final class RandomUtils {
 
     private RandomUtils() { }
 
-    public static double nextDouble(Random random, double max) {
+    public static long nextLong(Random random, double max) {
         Preconditions.checkArgument(max > 0);
 
         long bits, value;

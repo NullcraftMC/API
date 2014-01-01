@@ -17,6 +17,6 @@ public class RandomUtilsTest {
         Random random = new Random();
 
         for (int i = 0; i < TEST_RUNS; i++)
-            Assert.assertTrue(RandomUtils.nextDouble(random, 1) <= 1);
+            Assert.assertTrue(RandomUtils.nextLong(random, 1) <= 1);
     }
 }
