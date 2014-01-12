@@ -4,8 +4,8 @@ import de.nullcraft.api.bukkit.config.SerializableDataSourceConfig;
 import de.nullcraft.api.bukkit.config.SerializableServerConfig;
 import de.nullcraft.api.bukkit.entityaccessor.PlayerAccessor;
 import de.nullcraft.api.bukkit.plugin.NullcraftPlugin;
-import de.nullcraft.api.database.ebean.DatabaseRegistry;
-import de.nullcraft.api.database.ebean.EbeanUtils;
+import de.nullcraft.database.ebean.DatabaseRegistry;
+import de.nullcraft.database.ebean.EbeanUtils;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 
 /**
