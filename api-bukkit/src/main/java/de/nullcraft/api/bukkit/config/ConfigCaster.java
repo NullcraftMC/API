@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import de.nullcraft.api.collection.ImmutableUtils;
 
 import java.util.List;
@@ -82,13 +83,9 @@ public class ConfigCaster {
     public <T> ImmutableList<T> getList(String key, Class<T> target, List<T> defaultValue) {
         List<T> casted = Lists.newArrayList();
 
-        List<Object> iterable = get(key, List.class, Lists.newArrayList());
-        if (iterable != null) {
-            for (Object o : iterable)
-                casted.add(target.cast(o));
-        } else {
-            casted = Lists.newArrayList(defaultValue);
-        }
+        List<Object> iterable = get(key, List.class, defaultValue);
+        for (Object o : iterable)
+            casted.add(target.cast(o));
 
         return ImmutableUtils.immutableList(casted);
     }
@@ -111,5 +108,27 @@ public class ConfigCaster {
             casted.add(target.cast(o));
 
         return ImmutableUtils.immutableList(casted);
+    }
+
+    public <K, V> ImmutableMap<K, V> getMap(String key, Class<K> keyType, Class<V> valueType, Map<K, V> defaultValue) {
+        Map<K, V> casted = Maps.newHashMap();
+
+        for (Object entry : get(key, Map.class, defaultValue).entrySet()) {
+            Map.Entry<?, ?> castedEntry = (Map.Entry) entry;
+            casted.put(keyType.cast(castedEntry.getKey()), valueType.cast(castedEntry.getValue()));
+        }
+
+        return ImmutableUtils.immutableMap(casted);
+    }
+
+    public <K, V> ImmutableMap<K, V> requireMap(String key, Class<K> keyType, Class<V> valueType) {
+        Map<K, V> casted = Maps.newHashMap();
+
+        for (Object entry : require(key, Map.class).entrySet()) {
+            Map.Entry<?, ?> castedEntry = (Map.Entry) entry;
+            casted.put(keyType.cast(castedEntry.getKey()), valueType.cast(castedEntry.getValue()));
+        }
+
+        return ImmutableUtils.immutableMap(casted);
     }
 }
