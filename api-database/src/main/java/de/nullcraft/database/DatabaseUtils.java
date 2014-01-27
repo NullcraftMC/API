@@ -1,5 +1,6 @@
 package de.nullcraft.database;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -7,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public final class DatabaseUtils {
 
-    private static final Pattern REPLACE_USERNAME = Pattern.compile("(\\_)");
+    private static Pattern CHAR_LIST_PATTERN = Pattern.compile("\\[(.*)\\]");
 
     /**
      * Escaped einen beliebigen Namen für LIKE-Anfragen.
@@ -16,7 +17,11 @@ public final class DatabaseUtils {
      * @return Der escapte String
      */
     public static String escapeNameForLike(String str) {
-        return REPLACE_USERNAME.matcher(str).replaceAll("\\\\$1");
+        str = str.replace("_", "\\_");
+        str = str.replace("%", "\\%");
+        str = CHAR_LIST_PATTERN.matcher(str).replaceAll("\\\\[$1\\\\]");
+
+        return str;
     }
 
     private DatabaseUtils() { }
