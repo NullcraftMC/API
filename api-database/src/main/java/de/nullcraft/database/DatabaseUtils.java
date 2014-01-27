@@ -1,6 +1,5 @@
 package de.nullcraft.database;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
