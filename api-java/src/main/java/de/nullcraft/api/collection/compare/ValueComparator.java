@@ -21,4 +21,8 @@ public class ValueComparator<V> implements Comparator<Object> {
             return comparator.compare(base.get(a), base.get(b));
         }
     }
+
+    public Map<? extends Object, V> getMap() {
+        return base;
+    }
 }
