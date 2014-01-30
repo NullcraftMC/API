@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * @author maxikg <me@maxikg.de>
  */
-public class ComperableComparator<T extends Comparable> implements Comparator<T> {
+public class ComparableComparator<T extends Comparable> implements Comparator<T> {
 
     public int compare(T o1, T o2) {
         return o1.compareTo(o2);
