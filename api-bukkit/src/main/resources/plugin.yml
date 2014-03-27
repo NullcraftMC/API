@@ -1,4 +1,4 @@
-name: 'Nullcraft API'
+name: 'NullcraftAPI'
 version: '${project.version}'
 description: '${project.description}'
 authors: [ maxikg ]
